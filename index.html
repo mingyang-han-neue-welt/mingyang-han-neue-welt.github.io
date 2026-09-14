@@ -4,6 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>新时空—动静与响应</title>
+    
+    <!-- 引入 MathJax 用于渲染数学公式 -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']], // 行内公式用 $...$ 包裹
+                displayMath: [['$$', '$$'], ['\\[', '\\]']] // 独立公式用 $$...$$ 包裹
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
     <style>
         /* 整体风格设置：干净、现代的学术主页 */
         body { 
@@ -16,7 +31,7 @@
             background-color: #ffffff;
         }
 
-        /* 顶部个人信息区域 */
+        /* 顶部标题区 */
         .header {
             text-align: center;
             margin-bottom: 40px;
@@ -34,18 +49,8 @@
         .subtitle { 
             font-size: 1.1em; 
             color: #57606a; 
-            margin-bottom: 20px; 
+            margin-bottom: 0; /* 去掉了底部链接，margin 设为 0 更美观 */
         }
-
-        /* 联系链接 */
-        .links a {
-            color: #0366d6;
-            text-decoration: none;
-            margin: 0 12px;
-            font-weight: 500;
-            font-size: 0.95em;
-        }
-        .links a:hover { text-decoration: underline; }
 
         /* 内容区块卡片 */
         .section {
@@ -68,35 +73,40 @@
         p { margin-bottom: 15px; }
 
         /* 论文列表样式 */
-        .paper-item { margin-bottom: 25px; }
+        .paper-item { margin-bottom: 30px; }
         .paper-item:last-child { margin-bottom: 0; }
         
-        .paper-title { font-weight: 600; font-size: 1.15em; color: #24292e; }
-        .paper-authors { color: #57606a; font-size: 0.95em; margin: 6px 0 10px 0; }
+        .paper-title { font-weight: 600; font-size: 1.15em; color: #24292e; margin-bottom: 8px; }
+        .paper-authors { color: #57606a; font-size: 0.95em; margin: 6px 0 12px 0; }
         
+        /* 摘要部分样式 */
+        .paper-abstract {
+            font-size: 0.95em;
+            color: #444;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 3px solid #0366d6;
+        }
+
+        /* 数学公式外框美化 */
+        .math-block {
+            overflow-x: auto;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* 下载链接按钮 */
         .paper-links a { 
             font-size: 0.9em; 
             background: #0366d6; 
             color: white; 
-            padding: 5px 14px; 
+            padding: 6px 16px; 
             border-radius: 4px; 
             text-decoration: none;
             display: inline-block;
-            margin-right: 8px;
             transition: background 0.2s;
         }
         .paper-links a:hover { background: #0356b7; }
-
-        /* PDF 在线预览容器 */
-        .pdf-container { 
-            width: 100%; 
-            height: 500px; 
-            border: 1px solid #ddd; 
-            border-radius: 6px; 
-            overflow: hidden; 
-            margin-top: 15px;
-        }
-        .pdf-container iframe { width: 100%; height: 100%; border: none; }
     </style>
 </head>
 <body>
@@ -105,70 +115,86 @@
     <div class="header">
         <h1>新时空—动静与响应</h1>
         <div class="subtitle">探索时空结构 · 引力波 · 宇宙学</div>
-        
-        <!-- 你的个人链接 -->
-        <div class="links">
-            <a href="mailto:hanmingyang@sjtu.edu.cn">✉️ 邮箱</a>
-            <a href="https://github.com/mingyang-han-neue-welt">🐙 GitHub</a>
-            <a href="#">🔗 学术主页</a>
-        </div>
     </div>
 
     <!-- 区块一：研究简介 -->
     <div class="section">
         <h2>关于研究 / Research Overview</h2>
-        <p>欢迎来到我的研究主页。这里记录了我在“新时空—动静与响应”这一方向上的思考与探索。主要关注时空的动力学结构，以及在不同物理条件下的响应机制。</p>
+        <p>欢迎来到我的研究主页。这里记录了我在“新时空—动静与响应”这一方向上的思考与探索。</p>
+        <p>下面的摘要中包含了该方向的核心数学结构，例如在时空流形 $\mathcal{M}$ 上，我们考虑度规张量 $g_{\mu\nu}$ 的动力学演化。其作用量可以写为：</p>
+        
+        <!-- 这是一个独立显示的公式示例 -->
+        <div class="math-block">
+            $$ S = \int d^4x \sqrt{-g} \left( \frac{1}{2} g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi - V(\phi) \right) $$
+        </div>
+        
+        <p>其中 $g$ 是度规的行列式，$\phi$ 是标量场，而 $V(\phi)$ 是势能项。这里我们重点研究时空边界上的动静响应关系。</p>
     </div>
 
-    <!-- 区块二：论文列表（直接下载/打开） -->
+    <!-- 区块二：研究论文 -->
     <div class="section">
         <h2>研究论文 / Publications</h2>
         
         <!-- 论文 1 -->
         <div class="paper-item">
             <div class="paper-title">From Local Response to Global Momentum: Asymptotic Boundary Completion in Motion–Staticity Geometry</div>
-            <div class="paper-authors">Mingyang Han, et al.</div>
+            <div class="paper-authors">Mingyang Han</div>
+            
+            <!-- 论文摘要，包含数学公式 -->
+            <div class="paper-abstract">
+                <strong>摘要：</strong> 本文探讨了在动静几何中，局部响应如何通过渐近边界条件决定全局动量。我们引入了边界算子 $\mathcal{B}$ 来刻画时空的渐近行为。其核心关系式可以表示为：
+                $$ P_{\text{total}} = \oint_{\partial \mathcal{M}} \mathcal{B} \cdot d\mathbf{S} $$
+                其中 $P_{\text{total}}$ 是系统的总动量，积分是在无穷远处的边界 $\partial \mathcal{M}$ 上进行的。
+            </div>
+            
             <div class="paper-links">
-                <!-- 直接写文件名即可 -->
-                <a href="ADM.pdf" target="_blank">📄 阅读 ADM.pdf</a>
+                <a href="ADM.pdf" target="_blank">📄 阅读全文 (PDF)</a>
             </div>
         </div>
 
         <!-- 论文 2 -->
         <div class="paper-item">
             <div class="paper-title">General Relativity Paper</div>
-            <div class="paper-authors">Mingyang Han, et al.</div>
+            <div class="paper-authors">Mingyang Han</div>
+            
+            <div class="paper-abstract">
+                <strong>摘要：</strong> 探讨广义相对论框架下的时空结构。通过 Einstein 场方程 $G_{\mu\nu} = 8\pi T_{\mu\nu}$，分析在特定边界条件下的时空稳定性。
+            </div>
+            
             <div class="paper-links">
-                <a href="general-reltive.pdf" target="_blank">📄 阅读 general-reltive.pdf</a>
+                <a href="general-reltive.pdf" target="_blank">📄 阅读全文 (PDF)</a>
             </div>
         </div>
 
         <!-- 论文 3 -->
         <div class="paper-item">
             <div class="paper-title">Pre-Minkowski Paper</div>
-            <div class="paper-authors">Mingyang Han, et al.</div>
+            <div class="paper-authors">Mingyang Han</div>
+            
+            <div class="paper-abstract">
+                <strong>摘要：</strong> 讨论前闵可夫斯基时空的几何性质。设时空度规为 $\eta_{\mu\nu} = \text{diag}(-1, 1, 1, 1)$，在此背景下分析物理场的传播特性。
+            </div>
+            
             <div class="paper-links">
-                <a href="pre-Minkowski.pdf" target="_blank">📄 阅读 pre-Minkowski.pdf</a>
+                <a href="pre-Minkowski.pdf" target="_blank">📄 阅读全文 (PDF)</a>
             </div>
         </div>
 
-        <!-- 论文 4：名字带空格，极易出错，强烈建议你改名为 quantum_mechanics.pdf 后再上传 -->
+        <!-- 论文 4：注意文件名带有空格 -->
         <div class="paper-item">
             <div class="paper-title">Quantum Mechanics Paper</div>
-            <div class="paper-authors">Mingyang Han, et al.</div>
-            <div class="paper-links">
-                <a href="Quantum_mechanics I.pdf" target="_blank">📄 阅读 Quantum_mechanics I.pdf</a>
+            <div class="paper-authors">Mingyang Han</div>
+            
+            <div class="paper-abstract">
+                <strong>摘要：</strong> 量子力学基础问题研究。在 Hilbert 空间 $\mathcal{H}$ 中，量子态 $|\psi\rangle$ 的演化满足 Schrödinger 方程：
+                $$ i\hbar \frac{\partial}{\partial t} |\psi(t)\rangle = \hat{H} |\psi(t)\rangle $$
+                这里 $\hat{H}$ 是哈密顿算符。
             </div>
-        </div>
-    </div>
-
-    <!-- 区块三：在线预览（直接在第一篇论文位置预览） -->
-    <div class="section">
-        <h2>最新论文在线预览 / Preview</h2>
-        <p>下面直接展示我的最新研究论文全文：</p>
-        <div class="pdf-container">
-            <!-- 预览 ADM.pdf -->
-            <iframe src="ADM.pdf" title="PDF Preview"></iframe>
+            
+            <div class="paper-links">
+                <!-- 强烈建议你将文件重命名为 quantum_mechanics.pdf 再上传，然后改下面代码 -->
+                <a href="Quantum_mechanics I.pdf" target="_blank">📄 阅读全文 (PDF)</a>
+            </div>
         </div>
     </div>
 
