@@ -9,8 +9,8 @@
     <script>
         MathJax = {
             tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']], // 行内公式用 $...$ 包裹
-                displayMath: [['$$', '$$'], ['\\[', '\\]']] // 独立公式用 $$...$$ 包裹
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
             },
             svg: {
                 fontCache: 'global'
@@ -49,7 +49,7 @@
         .subtitle { 
             font-size: 1.1em; 
             color: #57606a; 
-            margin-bottom: 0; /* 去掉了底部链接，margin 设为 0 更美观 */
+            margin-bottom: 0;
         }
 
         /* 内容区块卡片 */
@@ -73,10 +73,10 @@
         p { margin-bottom: 15px; }
 
         /* 论文列表样式 */
-        .paper-item { margin-bottom: 30px; }
+        .paper-item { margin-bottom: 35px; }
         .paper-item:last-child { margin-bottom: 0; }
         
-        .paper-title { font-weight: 600; font-size: 1.15em; color: #24292e; margin-bottom: 8px; }
+        .paper-title { font-weight: 600; font-size: 1.15em; color: #24292e; margin-bottom: 8px; line-height: 1.5; }
         .paper-authors { color: #57606a; font-size: 0.95em; margin: 6px 0 12px 0; }
         
         /* 摘要部分样式 */
@@ -114,37 +114,85 @@
     <!-- 顶部：个人信息 -->
     <div class="header">
         <h1>新时空—动静与响应</h1>
-        <div class="subtitle">探索时空结构 · 引力波 · 宇宙学</div>
+        <div class="subtitle">基于运动-静止（Motion-Staticity）几何的动力学、操作性焊接与量子构型</div>
     </div>
 
     <!-- 区块一：研究简介 -->
     <div class="section">
         <h2>关于研究 / Research Overview</h2>
-        <p>欢迎来到我的研究主页。这里记录了我在“新时空—动静与响应”这一方向上的思考与探索。</p>
-        <p>下面的摘要中包含了该方向的核心数学结构，例如在时空流形 $\mathcal{M}$ 上，我们考虑度规张量 $g_{\mu\nu}$ 的动力学演化。其作用量可以写为：</p>
+        <p>本系列研究围绕“运动-静止（MS）”几何框架展开。我们从紧致的矢量-标量状态出发，证明相对论自由粒子哈密顿量的刚性，进而通过操作性生成元-位移响应逆向重构洛伦兹焊接映射与时空度规，并探讨其量子构型空间与全局边界完备化。</p>
         
-        <!-- 这是一个独立显示的公式示例 -->
+        <p>该框架的核心是探讨时空流形上的度规张量 $g_{\mu\nu}$ 及其相应的边界动力学。局部刻画上，系统满足如下由紧致态所确定的二次关系：</p>
+        
         <div class="math-block">
-            $$ S = \int d^4x \sqrt{-g} \left( \frac{1}{2} g^{\mu\nu} \partial_\mu \phi \partial_\nu \phi - V(\phi) \right) $$
+            $$ |\mathbf{D}|^2 + S^2 = 1, \quad S > 0 $$
         </div>
         
-        <p>其中 $g$ 是度规的行列式，$\phi$ 是标量场，而 $V(\phi)$ 是势能项。这里我们重点研究时空边界上的动静响应关系。</p>
+        <p>其中 $\mathbf{D}$ 代表运动自由度，$S$ 代表静止自由度。通过要求相同的状态拥有正则表示，可以导出自由的相对论哈密顿量 $H(\mathbf{p}) = c\sqrt{|\mathbf{p}|^2 + Q^2}$，并将局域几何推广至量子构型空间与渐近平坦时空的全局动量。</p>
     </div>
 
-    <!-- 区块二：研究论文 -->
+    <!-- 区块二：研究论文（按逻辑顺序排列） -->
     <div class="section">
         <h2>研究论文 / Publications</h2>
         
-        <!-- 论文 1 -->
+        <!-- Paper I -->
         <div class="paper-item">
-            <div class="paper-title">From Local Response to Global Momentum: Asymptotic Boundary Completion in Motion–Staticity Geometry</div>
+            <div class="paper-title">Paper I: Compact-State Duality and Rigidity in Relativistic Free-Particle Dynamics</div>
             <div class="paper-authors">Mingyang Han</div>
             
-            <!-- 论文摘要，包含数学公式 -->
             <div class="paper-abstract">
-                <strong>摘要：</strong> 本文探讨了在动静几何中，局部响应如何通过渐近边界条件决定全局动量。我们引入了边界算子 $\mathcal{B}$ 来刻画时空的渐近行为。其核心关系式可以表示为：
-                $$ P_{\text{total}} = \oint_{\partial \mathcal{M}} \mathcal{B} \cdot d\mathbf{S} $$
-                其中 $P_{\text{total}}$ 是系统的总动量，积分是在无穷远处的边界 $\partial \mathcal{M}$ 上进行的。
+                <strong>摘要：</strong> 将经典相对论自由粒子动力学表述为满足 $|\mathbf{D}|^2 + S^2 = 1$ 且有界矢量-标量状态 $(\mathbf{D},S)$。要求同一状态具有正则表示，导出了哈密顿量的自洽性方程。我们证明了，具备标定静止值且满足正则表示完备性的有限凸 $C^1$ 哈密顿量，唯一地确定为：
+                $$ H(\mathbf{p}) = c\sqrt{|\mathbf{p}|^2 + Q^2} $$
+                这产生了正质量壳层 $SO^+(1,3)$，作为其最大连通线性协变群。
+            </div>
+            
+            <div class="paper-links">
+                <!-- 注意：若文件名已改名，请同步修改 href -->
+                <a href="pre-Minkowski.pdf" target="_blank">📄 阅读全文 (PDF)</a>
+            </div>
+        </div>
+
+        <!-- Paper II -->
+        <div class="paper-item">
+            <div class="paper-title">Paper II: Operational Soldering from Relativistic Massive-State Geometry: An Inverse Reconstruction</div>
+            <div class="paper-authors">Mingyang Han</div>
+            
+            <div class="paper-abstract">
+                <strong>摘要：</strong> 从标量入射数据逆向重构局部洛伦兹几何。设内禀洛伦兹丛 $V \to M$ 独立于切丛 $TM$，基于正质量生成元锥上的标量响应 $\Theta_x(\Pi, \xi)$，结合复合性、齐次性与连续性，唯一地重构出焊接映射 $e_x: T_xM \to V_x$。该映射进一步诱导出时空度规：
+                $$ g = e^*\eta $$
+                本文论证了在限制性无挠分支下，标准ADM/Einstein分支可由壳外闭合条件导出。
+            </div>
+            
+            <div class="paper-links">
+                <a href="general-reletive.pdf" target="_blank">📄 阅读全文 (PDF)</a>
+            </div>
+        </div>
+
+        <!-- Paper III -->
+        <div class="paper-item">
+            <div class="paper-title">Paper III: From Operational Soldering to Quantum Configuration Space: Coherent Deformations and Projective Comparison</div>
+            <div class="paper-authors">Mingyang Han</div>
+            
+            <div class="paper-abstract">
+                <strong>摘要：</strong> 基于操作性重构的洛伦兹焊接映射，研究其局部变分所对应的量子运动学。焊接构型空间为 $\mathcal{E}_x = \mathrm{Hom}(T_xM, V_x)$。精确的酉实现保持复合性意味着响应代数必然是阿贝尔的。通过引入“相干焊接形变”原理并采用标准的余切完备化，导出了非对易的Weyl量子运动学：
+                $$ [\hat{K}(A), \hat{\Theta}_{\Pi,\xi}] = i\hbar \Pi(A\xi) I $$
+                非退化区域上的零阶洛伦兹约化恢复了定向、时间定向的洛伦兹度规构型空间。
+            </div>
+            
+            <div class="paper-links">
+                <!-- 强烈建议将文件名改为 quantum_mechanics.pdf 避免空格报错 -->
+                <a href="Quantum_mechanics I.pdf" target="_blank">📄 阅读全文 (PDF)</a>
+            </div>
+        </div>
+
+        <!-- Paper IV -->
+        <div class="paper-item">
+            <div class="paper-title">Paper IV: From Local Response to Global Momentum: Asymptotic Boundary Completion in Motion-Staticity Geometry</div>
+            <div class="paper-authors">Mingyang Han</div>
+            
+            <div class="paper-abstract">
+                <strong>摘要：</strong> 研究标定渐近闵可夫斯基端上的局域到全局问题。通过引入标准的 Regge-Teitelboim 衰减与宇称条件，使得重构的体生成元在接近常数平移时，其泛函可微性受到表面项阻碍。该边界原语定义了全局平移余矢量 $\mathsf{P}_\infty^{\mathrm{MS}}$。引入经验性的爱因斯坦归一化 $\kappa = \frac{8\pi G}{c^4}$ 后，所构造的平移荷与标准 ADM 四动量完全一致：
+                $$ E_\infty^{\mathrm{MS}} = E_{\mathrm{ADM}}, \quad \mathbf{P}_\infty^{\mathrm{MS}} = \mathbf{P}_{\mathrm{ADM}} $$
             </div>
             
             <div class="paper-links">
@@ -152,50 +200,6 @@
             </div>
         </div>
 
-        <!-- 论文 2 -->
-        <div class="paper-item">
-            <div class="paper-title">General Relativity Paper</div>
-            <div class="paper-authors">Mingyang Han</div>
-            
-            <div class="paper-abstract">
-                <strong>摘要：</strong> 探讨广义相对论框架下的时空结构。通过 Einstein 场方程 $G_{\mu\nu} = 8\pi T_{\mu\nu}$，分析在特定边界条件下的时空稳定性。
-            </div>
-            
-            <div class="paper-links">
-                <a href="general-reltive.pdf" target="_blank">📄 阅读全文 (PDF)</a>
-            </div>
-        </div>
-
-        <!-- 论文 3 -->
-        <div class="paper-item">
-            <div class="paper-title">Pre-Minkowski Paper</div>
-            <div class="paper-authors">Mingyang Han</div>
-            
-            <div class="paper-abstract">
-                <strong>摘要：</strong> 讨论前闵可夫斯基时空的几何性质。设时空度规为 $\eta_{\mu\nu} = \text{diag}(-1, 1, 1, 1)$，在此背景下分析物理场的传播特性。
-            </div>
-            
-            <div class="paper-links">
-                <a href="pre-Minkowski.pdf" target="_blank">📄 阅读全文 (PDF)</a>
-            </div>
-        </div>
-
-        <!-- 论文 4：注意文件名带有空格 -->
-        <div class="paper-item">
-            <div class="paper-title">Quantum Mechanics Paper</div>
-            <div class="paper-authors">Mingyang Han</div>
-            
-            <div class="paper-abstract">
-                <strong>摘要：</strong> 量子力学基础问题研究。在 Hilbert 空间 $\mathcal{H}$ 中，量子态 $|\psi\rangle$ 的演化满足 Schrödinger 方程：
-                $$ i\hbar \frac{\partial}{\partial t} |\psi(t)\rangle = \hat{H} |\psi(t)\rangle $$
-                这里 $\hat{H}$ 是哈密顿算符。
-            </div>
-            
-            <div class="paper-links">
-                <!-- 强烈建议你将文件重命名为 quantum_mechanics.pdf 再上传，然后改下面代码 -->
-                <a href="Quantum_mechanics I.pdf" target="_blank">📄 阅读全文 (PDF)</a>
-            </div>
-        </div>
     </div>
 
 </body>
