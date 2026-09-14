@@ -106,6 +106,7 @@
             display: inline-block;
             transition: background 0.2s;
         }
+
         .paper-links a:hover { background: #0356b7; }
     </style>
 </head>
@@ -120,15 +121,72 @@
     <!-- Overview -->
     <div class="section">
         <h2>Research Overview</h2>
-        <p>This research program investigates the "Motion-Staticity" (MS) geometric framework. Starting from a compact vector-scalar state, we explore the rigidity of relativistic free-particle Hamiltonians, reconstruct Lorentzian soldering maps and spacetime metrics via operational generator-displacement responses, and discuss the quantum configuration space and global boundary completion.</p>
+
+        <p>
+            This research program develops the "Motion-Staticity" (MS) reconstruction framework.
+            It begins with a bounded vector-scalar state for a massive process and asks how far
+            relativistic structure can be recovered by requiring compatible operational and
+            canonical representations. The resulting relativistic massive-generator geometry is
+            then used as input for an operational reconstruction of Lorentzian soldering and
+            spacetime geometry, followed by two distinct downstream directions: a restricted
+            classical gravitational and asymptotic-boundary branch, and a local quantum
+            soldering-kinematics branch.
+        </p>
         
-        <p>The core of this framework lies in the metric tensor $g_{\mu\nu}$ on a spacetime manifold and its boundary dynamics. Locally, the system satisfies a quadratic relation determined by the compact state:</p>
+        <p>
+            The primitive massive MS state is described by a motion component $\mathbf{D}$ and
+            a scalar staticity component $S$ satisfying
+        </p>
         
         <div class="math-block">
             $$ |\mathbf{D}|^2 + S^2 = 1, \quad S > 0 $$
         </div>
+
+        <p>
+            This quadratic relation is an internal Euclidean state-space normalization; it is not
+            introduced as a spacetime metric. In the operational radial realization,
+            $\mathbf{D}$ becomes $\mathbf{v}/c$, while the scalar component becomes
+            $S=d\tau/dt$ after the additive intrinsic scalar accumulation is identified with
+            proper time through the induced Lorentzian chronometry.
+        </p>
         
-        <p>where $\mathbf{D}$ represents the motion degrees of freedom and $S$ represents the staticity. By requiring the same state to admit a canonical representation, one uniquely derives the relativistic free Hamiltonian $H(\mathbf{p}) = c\sqrt{|\mathbf{p}|^2 + Q^2}$, extending the local geometry to quantum configuration spaces and the global momentum of asymptotically flat spacetimes.</p>
+        <p>
+            Requiring the same MS state to admit a compatible canonical representation with an
+            initially unspecified free Hamiltonian $H(\mathbf{p})$ gives the consistency equation
+        </p>
+
+        <div class="math-block">
+            $$
+            \frac{|\nabla_{\mathbf p}H|^2}{c^2}
+            +
+            \frac{\left(H-\mathbf p\cdot\nabla_{\mathbf p}H\right)^2}{c^2Q^2}
+            =1,
+            \qquad
+            H-\mathbf p\cdot\nabla_{\mathbf p}H>0.
+            $$
+        </div>
+
+        <p>
+            For a finite convex $C^1$ Hamiltonian with the calibrated rest value
+            $H(\mathbf{0})=cQ$, satisfying this relation globally and giving a complete canonical
+            representation of the massive MS state manifold, the free Hamiltonian is uniquely
+        </p>
+
+        <div class="math-block">
+            $$ H(\mathbf{p}) = c\sqrt{|\mathbf{p}|^2 + Q^2}. $$
+        </div>
+
+        <p>
+            The corresponding positive massive-generator geometry supplies the Lorentzian
+            internal structure used in the curved-spacetime reconstruction. A scalar
+            generator-displacement response then reconstructs a nondegenerate solder map
+            $e:TM\to V$ and the metric $g=e^*\eta$. From this point the program separates into
+            distinct developments: under additional restricted canonical assumptions one obtains
+            an ADM/Einstein classical branch and, with asymptotic boundary conditions, a total
+            translation charge; alternatively, treating the solder map as a configuration variable
+            and adding coherent soldering deformations produces a local Weyl-type quantum
+            kinematics.
+        </p>
         
         <p><strong>Note on AI and a New Paradigm:</strong> This research is conducted with the assistance of AI, proposing a completely new perspective on the universe and quantum mechanics. Visitors are highly encouraged to utilize these articles alongside AI tools to learn, understand, verify, and further deduce the profound implications of this theoretical framework.</p>
     </div>
@@ -143,9 +201,22 @@
             <div class="paper-authors">The Author</div>
             
             <div class="paper-abstract">
-                <strong>Abstract:</strong> We formulate classical relativistic free-particle dynamics in terms of a bounded vector-scalar state $(\mathbf{D},S)$ satisfying $|\mathbf{D}|^2 + S^2 = 1$ with $S > 0$. A massive process carries a spatial displacement and an additive intrinsic scalar accumulation. Requiring the same state to admit a canonical representation leads to a nonlinear consistency equation for an unspecified free Hamiltonian. We prove that a finite convex $C^1$ Hamiltonian with the calibrated rest value and a complete canonical representation of the massive state manifold is uniquely:
-                $$ H(\mathbf{p}) = c\sqrt{|\mathbf{p}|^2 + Q^2} $$
-                The resulting positive massive shell has $SO^+(1,3)$ as its maximal connected linear covariance group.
+                <strong>Abstract:</strong>
+                We formulate classical relativistic free-particle dynamics in terms of a bounded
+                vector-scalar state $(\mathbf{D},S)$ satisfying
+                $|\mathbf{D}|^2+S^2=1$ with $S>0$. Its operational radial realization relates
+                the state to spatial displacement, observer duration, and an additive intrinsic
+                scalar accumulation that acquires the proper-time interpretation. Requiring the
+                same state to admit a compatible canonical representation produces a nonlinear
+                consistency equation for an otherwise unspecified free Hamiltonian. For a finite
+                convex $C^1$ Hamiltonian with $H(\mathbf 0)=cQ$ and a complete canonical
+                representation of the massive state manifold, the Hamiltonian is uniquely
+                $$ H(\mathbf{p}) = c\sqrt{|\mathbf{p}|^2 + Q^2}. $$
+                Complementary rigidity results and explicit degenerate projection solutions show
+                why completeness or nondegeneracy assumptions are essential. The resulting
+                positive massive shell has $SO^+(1,3)$ as its maximal connected linear covariance
+                group, with translation-origin freedom giving the proper orthochronous Poincaré
+                structure.
             </div>
             
             <div class="paper-links">
@@ -159,9 +230,24 @@
             <div class="paper-authors">The Author</div>
             
             <div class="paper-abstract">
-                <strong>Abstract:</strong> We formulate an inverse reconstruction of local Lorentzian geometry from scalar incidence data associated with relativistic massive generators. An internal rank-four Lorentz bundle $V \to M$ is initially independent of the tangent bundle $TM$. Given a scalar generator-displacement response $\Theta_x(\Pi, \xi)$, additive composition, positive homogeneity, and operational faithfulness yield a unique bilinear extension. Finite-dimensional duality reconstructs a unique solder map $e_x: T_xM \to V_x$, and the internal Lorentz form induces the spacetime metric:
-                $$ g = e^*\eta $$
-                Under a restricted torsion-free branch, the standard ADM/Einstein branch is recovered by off-shell closure.
+                <strong>Abstract:</strong>
+                Taking the relativistic massive-generator geometry obtained in the flat-space
+                analysis as input, we formulate an inverse reconstruction of local Lorentzian
+                spacetime geometry. An internal rank-four Lorentz bundle $V\to M$ is initially
+                independent of the tangent bundle $TM$, with no spacetime metric or solder form
+                assumed. A scalar generator-displacement response
+                $\Theta_x(\Pi,\xi)$, defined on the positive massive-generator cone and tangent
+                displacements, is required to satisfy composition, positive homogeneity,
+                continuity, smooth base-point dependence, and operational faithfulness.
+                These conditions give a unique bilinear extension and reconstruct a unique
+                nondegenerate solder map
+                $$ e_x:T_xM\longrightarrow V_x, \qquad g=e^*\eta. $$
+                Absolute response calibration fixes the spacetime metric scale, whereas response
+                data known only up to local positive rescaling determine only the conformal class.
+                As a separate and conditional downstream result, imposing a torsion-free branch,
+                metric ADM phase space, the standard Lorentzian hypersurface-deformation algebra,
+                and a restricted quadratic scalar constraint recovers the ADM/Einstein branch by
+                off-shell closure.
             </div>
             
             <div class="paper-links">
@@ -175,9 +261,26 @@
             <div class="paper-authors">The Author</div>
             
             <div class="paper-abstract">
-                <strong>Abstract:</strong> Starting from an operationally reconstructed Lorentzian solder map, we study the quantum kinematics associated with its local variations. The soldering configuration space is $\mathcal{E}_x = \mathrm{Hom}(T_xM, V_x)$. An exact unitary implementation preserving additive composition is necessarily Abelian. By imposing a coherent soldering-deformation principle and adopting the standard cotangent completion, we derive the noncommutative Weyl quantum kinematics:
-                $$ [\hat{K}(A), \hat{\Theta}_{\Pi,\xi}] = i\hbar \Pi(A\xi) I $$
-                On the nondegenerate sector, zero-level internal Lorentz reduction recovers the cotangent bundle of oriented, time-oriented Lorentz metric configuration space.
+                <strong>Abstract:</strong>
+                Starting from the operationally reconstructed Lorentzian solder map, we study the
+                local quantum kinematics associated with allowing the soldering configuration to
+                vary. At each event the ambient configuration space is
+                $\mathcal{E}_x=\mathrm{Hom}(T_xM,V_x)$, and the response functions
+                $\Theta_{\Pi,\xi}(e)=\Pi(e\xi)$ span its linear dual and separate
+                configurations. An exact unitary implementation that preserves additive
+                composition independently in the generator and displacement arguments is
+                necessarily Abelian, so the classical response alone does not generate
+                noncommutative kinematics. Introducing the additional principle of coherent
+                soldering translations $e\mapsto e+A$ and the standard cotangent completion
+                $T^*\mathcal{E}_x$ yields
+                $$ [\hat{K}(A), \hat{\Theta}_{\Pi,\xi}]
+                = i\hbar\,\Pi(A\xi)I, $$
+                while the response observables themselves remain mutually commuting. On the
+                nondegenerate sector, zero-level internal Lorentz reduction recovers the cotangent
+                bundle of oriented, time-oriented Lorentz metric configuration space. A separate
+                projective comparison construction provides a conditional diagnostic of
+                spin-cover parity. The construction is local and kinematical; it is not a
+                quantization of general relativity or a derivation of matter.
             </div>
             
             <div class="paper-links">
@@ -191,8 +294,27 @@
             <div class="paper-authors">The Author</div>
             
             <div class="paper-abstract">
-                <strong>Abstract:</strong> We study the local-to-global problem on calibrated asymptotically Minkowskian ends. Standard Regge-Teitelboim falloff and parity conditions are imposed. Allowing the reconstructed bulk generators to approach constant translations produces a surface obstruction to functional differentiability. Its boundary primitive defines a total translation covector $\mathsf{P}_\infty^{\mathrm{MS}}$. After imposing the empirical Einstein normalization $\kappa = \frac{8\pi G}{c^4}$, the completed MS translation charge agrees with the ADM four-momentum:
-                $$ E_\infty^{\mathrm{MS}} = E_{\mathrm{ADM}}, \quad \mathbf{P}_\infty^{\mathrm{MS}} = \mathbf{P}_{\mathrm{ADM}} $$
+                <strong>Abstract:</strong>
+                Returning to the restricted classical branch, we study how a locally reconstructed
+                gravitational geometry acquires a global translation generator for an isolated
+                system. On calibrated asymptotically Minkowskian ends, standard
+                Regge-Teitelboim falloff and parity conditions are imposed together with the
+                response calibration required at the translation-sensitive asymptotic orders.
+                Allowing the reconstructed bulk generators to approach constant translations
+                produces a surface obstruction to functional differentiability. Its boundary
+                primitive defines a total translation covector
+                $\mathsf{P}^{\mathrm{MS}}_\infty\in\mathfrak{t}^*_\infty$.
+                The resulting observer-energy function reconstructs the complete total momentum
+                and exhibits a local-global response reciprocity between proper-time norm and
+                invariant mass. After imposing the empirical Einstein normalization
+                $\kappa=\frac{8\pi G}{c^4}$, the completed MS translation charge agrees with the
+                ADM four-momentum:
+                $$ E_\infty^{\mathrm{MS}} = E_{\mathrm{ADM}},
+                \quad
+                \mathbf{P}_\infty^{\mathrm{MS}} = \mathbf{P}_{\mathrm{ADM}}. $$
+                The construction does not derive the value of $G$ or a new positive-mass theorem;
+                its contribution is the operational provenance and structural placement of the
+                asymptotic translation charge within the MS framework.
             </div>
             
             <div class="paper-links">
