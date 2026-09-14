@@ -1,1 +1,176 @@
-这是我的个人主页，欢迎你的访问！
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新时空—动静与响应</title>
+    <style>
+        /* 整体风格设置：干净、现代的学术主页 */
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            max-width: 800px; 
+            margin: 40px auto; 
+            padding: 0 20px; 
+            line-height: 1.7; 
+            color: #333;
+            background-color: #ffffff;
+        }
+
+        /* 顶部个人信息区域 */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #eaecef;
+        }
+
+        h1 { 
+            margin: 0 0 10px 0; 
+            font-size: 2.4em; 
+            color: #1a1a1a; 
+            letter-spacing: 1px;
+        }
+
+        .subtitle { 
+            font-size: 1.1em; 
+            color: #57606a; 
+            margin-bottom: 20px; 
+        }
+
+        /* 联系链接 */
+        .links a {
+            color: #0366d6;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+        .links a:hover { text-decoration: underline; }
+
+        /* 内容区块卡片 */
+        .section {
+            background: #fdfdfd;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e1e4e8;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            margin-bottom: 30px;
+        }
+
+        h2 { 
+            font-size: 1.4em; 
+            border-bottom: 1px solid #eaecef; 
+            padding-bottom: 10px; 
+            margin-top: 0;
+            color: #24292e;
+        }
+
+        p { margin-bottom: 15px; }
+
+        /* 论文列表样式 */
+        .paper-item { margin-bottom: 25px; }
+        .paper-item:last-child { margin-bottom: 0; }
+        
+        .paper-title { font-weight: 600; font-size: 1.15em; color: #24292e; }
+        .paper-authors { color: #57606a; font-size: 0.95em; margin: 6px 0 10px 0; }
+        
+        .paper-links a { 
+            font-size: 0.9em; 
+            background: #0366d6; 
+            color: white; 
+            padding: 5px 14px; 
+            border-radius: 4px; 
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 8px;
+            transition: background 0.2s;
+        }
+        .paper-links a:hover { background: #0356b7; }
+
+        /* PDF 在线预览容器 */
+        .pdf-container { 
+            width: 100%; 
+            height: 500px; 
+            border: 1px solid #ddd; 
+            border-radius: 6px; 
+            overflow: hidden; 
+            margin-top: 15px;
+        }
+        .pdf-container iframe { width: 100%; height: 100%; border: none; }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部：个人信息 -->
+    <div class="header">
+        <h1>新时空—动静与响应</h1>
+        <div class="subtitle">探索时空结构 · 引力波 · 宇宙学</div>
+        
+        <!-- 你的个人链接 -->
+        <div class="links">
+            <a href="mailto:hanmingyang@sjtu.edu.cn">✉️ 邮箱</a>
+            <a href="https://github.com/mingyang-han-neue-welt">🐙 GitHub</a>
+            <a href="#">🔗 学术主页</a>
+        </div>
+    </div>
+
+    <!-- 区块一：研究简介 -->
+    <div class="section">
+        <h2>关于研究 / Research Overview</h2>
+        <p>欢迎来到我的研究主页。这里记录了我在“新时空—动静与响应”这一方向上的思考与探索。主要关注时空的动力学结构，以及在不同物理条件下的响应机制。</p>
+    </div>
+
+    <!-- 区块二：论文列表（直接下载/打开） -->
+    <div class="section">
+        <h2>研究论文 / Publications</h2>
+        
+        <!-- 论文 1 -->
+        <div class="paper-item">
+            <div class="paper-title">From Local Response to Global Momentum: Asymptotic Boundary Completion in Motion–Staticity Geometry</div>
+            <div class="paper-authors">Mingyang Han, et al.</div>
+            <div class="paper-links">
+                <!-- 直接写文件名即可 -->
+                <a href="ADM.pdf" target="_blank">📄 阅读 ADM.pdf</a>
+            </div>
+        </div>
+
+        <!-- 论文 2 -->
+        <div class="paper-item">
+            <div class="paper-title">General Relativity Paper</div>
+            <div class="paper-authors">Mingyang Han, et al.</div>
+            <div class="paper-links">
+                <a href="general-reltive.pdf" target="_blank">📄 阅读 general-reltive.pdf</a>
+            </div>
+        </div>
+
+        <!-- 论文 3 -->
+        <div class="paper-item">
+            <div class="paper-title">Pre-Minkowski Paper</div>
+            <div class="paper-authors">Mingyang Han, et al.</div>
+            <div class="paper-links">
+                <a href="pre-Minkowski.pdf" target="_blank">📄 阅读 pre-Minkowski.pdf</a>
+            </div>
+        </div>
+
+        <!-- 论文 4：名字带空格，极易出错，强烈建议你改名为 quantum_mechanics.pdf 后再上传 -->
+        <div class="paper-item">
+            <div class="paper-title">Quantum Mechanics Paper</div>
+            <div class="paper-authors">Mingyang Han, et al.</div>
+            <div class="paper-links">
+                <a href="Quantum_mechanics I.pdf" target="_blank">📄 阅读 Quantum_mechanics I.pdf</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 区块三：在线预览（直接在第一篇论文位置预览） -->
+    <div class="section">
+        <h2>最新论文在线预览 / Preview</h2>
+        <p>下面直接展示我的最新研究论文全文：</p>
+        <div class="pdf-container">
+            <!-- 预览 ADM.pdf -->
+            <iframe src="ADM.pdf" title="PDF Preview"></iframe>
+        </div>
+    </div>
+
+</body>
+</html>
