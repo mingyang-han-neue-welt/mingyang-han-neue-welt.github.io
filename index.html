@@ -121,6 +121,45 @@
         .paper-links a:hover { 
             background: #0356b7; 
         }
+
+        /* Visitor Counter */
+        #visitor-counter {
+            position: fixed;
+            right: 18px;
+            bottom: 16px;
+            z-index: 1000;
+
+            padding: 7px 12px;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+
+            background: rgba(255, 255, 255, 0.94);
+            color: #57606a;
+
+            font-size: 0.78em;
+            line-height: 1.4;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+
+            user-select: none;
+        }
+
+        #visitor-counter .visitor-count {
+            color: #24292e;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            #visitor-counter {
+                right: 10px;
+                bottom: 10px;
+                padding: 5px 9px;
+                font-size: 0.72em;
+            }
+        }
     </style>
 </head>
 
@@ -361,6 +400,126 @@
         </div>
 
     </div>
+
+    <!-- Visitor Counter -->
+    <div id="visitor-counter" title="Approximate total visits">
+        Views:
+        <span class="visitor-count">...</span>
+    </div>
+
+    <!-- Visitor Counter Script -->
+    <script>
+        (function () {
+
+            const counterElement =
+                document.querySelector('#visitor-counter .visitor-count');
+
+            /*
+             * Use the current website domain automatically.
+             * Example:
+             * example.com
+             * username.github.io
+             */
+            const site = window.location.hostname;
+
+            /*
+             * Treat index.html and / as the same page.
+             * This also works correctly when the website is hosted
+             * inside a subdirectory such as GitHub Pages.
+             */
+            let path = window.location.pathname || '/';
+
+            path = path.replace(/\/index\.html?$/i, '/');
+
+            if (!path) {
+                path = '/';
+            }
+
+            /*
+             * The counter only runs on an actual website.
+             * It will display "--" when the HTML file is opened
+             * directly from the computer or on localhost.
+             */
+            if (
+                !site ||
+                site === 'localhost' ||
+                site === '127.0.0.1'
+            ) {
+                counterElement.textContent = '--';
+                return;
+            }
+
+            const apiBase =
+                'https://page-views-api.ratneshc.com/api/v1';
+
+            const siteParameter =
+                encodeURIComponent(site);
+
+            const pathParameter =
+                encodeURIComponent(path);
+
+            async function updateVisitorCounter() {
+
+                try {
+
+                    /*
+                     * Register this visit.
+                     */
+                    await fetch(
+                        `${apiBase}/track?site=${siteParameter}&path=${pathParameter}`,
+                        {
+                            method: 'GET',
+                            cache: 'no-store'
+                        }
+                    );
+
+                    /*
+                     * Read the current total.
+                     */
+                    const response = await fetch(
+                        `${apiBase}/views?site=${siteParameter}&path=${pathParameter}`,
+                        {
+                            method: 'GET',
+                            cache: 'no-store'
+                        }
+                    );
+
+                    if (!response.ok) {
+                        throw new Error(
+                            `Visitor counter returned ${response.status}`
+                        );
+                    }
+
+                    const data = await response.json();
+
+                    const views = Number(data.views);
+
+                    if (Number.isFinite(views)) {
+                        counterElement.textContent =
+                            views.toLocaleString();
+                    } else {
+                        counterElement.textContent = '--';
+                    }
+
+                } catch (error) {
+
+                    /*
+                     * If the external counter service is temporarily
+                     * unavailable, the rest of the webpage is unaffected.
+                     */
+                    console.warn(
+                        'Visitor counter unavailable:',
+                        error
+                    );
+
+                    counterElement.textContent = '--';
+                }
+            }
+
+            updateVisitorCounter();
+
+        })();
+    </script>
 
 </body>
 </html>
