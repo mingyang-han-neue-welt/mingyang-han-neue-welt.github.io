@@ -3,126 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>New Spacetime — Motion and Staticity</title>
-    
-    <!-- MathJax for rendering mathematical formulas -->
+
+    <!-- MathJax -->
     <script>
         MathJax = {
             tex: {
                 inlineMath: [['$', '$'], ['\\(', '\\)']],
                 displayMath: [['$$', '$$'], ['\\[', '\\]']]
-            },
-            svg: {
-                fontCache: 'global'
             }
         };
     </script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+        id="MathJax-script"
+        async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
 
     <style>
-        /* Overall Style: Clean, modern academic homepage */
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
-            max-width: 800px; 
-            margin: 40px auto; 
-            padding: 0 20px; 
-            line-height: 1.7; 
-            color: #333;
-            background-color: #ffffff;
+
+        * {
+            box-sizing: border-box;
         }
 
-        /* Header Section */
+        body {
+            margin: 0;
+            background: #ffffff;
+            color: #333;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+            line-height: 1.72;
+        }
+
+        /* =========================
+           PAGE
+           ========================= */
+
+        .page {
+            max-width: 1380px;
+            margin: 0 auto;
+            padding: 38px 30px 60px 30px;
+        }
+
+        /* =========================
+           HEADER
+           ========================= */
+
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 25px;
+            margin-bottom: 36px;
+            padding-bottom: 26px;
             border-bottom: 2px solid #eaecef;
         }
 
-        h1 { 
-            margin: 0 0 10px 0; 
-            font-size: 2.4em; 
-            color: #1a1a1a; 
-            letter-spacing: 1px;
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.45em;
+            font-weight: 650;
+            color: #1a1a1a;
+            letter-spacing: 0.7px;
         }
 
-        .subtitle { 
-            font-size: 1.1em; 
-            color: #57606a; 
-            margin-bottom: 0;
+        .subtitle {
+            color: #57606a;
+            font-size: 1.08em;
         }
 
-        /* Content Cards */
+        /* =========================
+           TWO-COLUMN LAYOUT
+           60 : 40
+           ========================= */
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(340px, 2fr);
+            gap: 28px;
+            align-items: start;
+        }
+
+        .left-column,
+        .right-column {
+            min-width: 0;
+        }
+
+        /* =========================
+           GENERAL SECTION STYLE
+           ========================= */
+
         .section {
             background: #fdfdfd;
-            padding: 30px;
-            border-radius: 8px;
             border: 1px solid #e1e4e8;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-            margin-bottom: 30px;
+            border-radius: 9px;
+            padding: 30px;
+            margin-bottom: 26px;
+            box-shadow: 0 2px 7px rgba(0, 0, 0, 0.035);
         }
 
-        h2 { 
-            font-size: 1.4em; 
-            border-bottom: 1px solid #eaecef; 
-            padding-bottom: 10px; 
+        h2 {
+            margin: 0 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eaecef;
+            color: #24292e;
+            font-size: 1.45em;
+            font-weight: 650;
+        }
+
+        h3 {
+            margin: 27px 0 12px 0;
+            color: #24292e;
+            font-size: 1.17em;
+            line-height: 1.45;
+        }
+
+        p {
             margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           CAUTION + AI BOXES
+           ========================= */
+
+        .notice {
+            padding: 17px 19px;
+            margin-bottom: 18px;
+            border-radius: 6px;
+            font-size: 0.96em;
+        }
+
+        .notice-caution {
+            background: #fffdf4;
+            border: 1px solid #eadfae;
+            border-left: 4px solid #c99b1d;
+        }
+
+        .notice-ai {
+            background: #f6f9fd;
+            border: 1px solid #d9e4f2;
+            border-left: 4px solid #0366d6;
+        }
+
+        .notice strong {
             color: #24292e;
         }
 
-        p { margin-bottom: 15px; }
+        /* =========================
+           LEFT-SIDE PAPER GUIDE
+           ========================= */
 
-        /* Paper List Styles */
-        .paper-item { margin-bottom: 35px; }
-        .paper-item:last-child { margin-bottom: 0; }
-        
-        .paper-title { 
-            font-weight: 600; 
-            font-size: 1.15em; 
-            color: #24292e; 
-            margin-bottom: 8px; 
-            line-height: 1.5; 
+        .series-intro {
+            font-size: 1.01em;
         }
 
-        .paper-authors { 
-            color: #57606a; 
-            font-size: 0.95em; 
-            margin: 6px 0 12px 0; 
+        .paper-guide {
+            margin-top: 28px;
+            padding-top: 2px;
         }
-        
-        /* Abstract Styles */
-        .paper-abstract {
-            font-size: 0.95em;
+
+        .paper-guide + .paper-guide {
+            border-top: 1px solid #eceff2;
+            padding-top: 24px;
+        }
+
+        .paper-number {
+            display: inline-block;
+            margin-bottom: 5px;
+            color: #0366d6;
+            font-size: 0.79em;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .guide-title {
+            margin-top: 0;
+            margin-bottom: 12px;
+        }
+
+        .concept-line {
+            margin: 13px 0;
+            padding: 10px 13px;
+            background: #f7f8fa;
+            border-left: 3px solid #d0d7de;
+            font-size: 0.94em;
             color: #444;
-            margin-bottom: 15px;
-            padding-left: 15px;
-            border-left: 3px solid #0366d6;
         }
 
-        /* Math Block Overflow */
+        /* =========================
+           MATH
+           ========================= */
+
         .math-block {
+            max-width: 100%;
             overflow-x: auto;
-            padding: 10px 0;
             text-align: center;
         }
 
-        /* PDF Download Button */
-        .paper-links a { 
-            font-size: 0.9em; 
-            background: #0366d6; 
-            color: white; 
-            padding: 6px 16px; 
-            border-radius: 4px; 
-            text-decoration: none;
+        /*
+         * Prevent large vertical blank areas around
+         * one-line displayed equations.
+         */
+        .math-block mjx-container[display="true"] {
+            margin-top: 0.35em !important;
+            margin-bottom: 0.35em !important;
+        }
+
+        .math-block.single-line {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* =========================
+           RIGHT PUBLICATIONS
+           ========================= */
+
+        .publications-section {
+            padding: 27px;
+        }
+
+        .paper-item {
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #e7eaed;
+        }
+
+        .paper-item:last-child {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .paper-title {
+            color: #24292e;
+            font-size: 1.09em;
+            font-weight: 650;
+            line-height: 1.48;
+            margin-bottom: 7px;
+        }
+
+        .paper-authors {
+            color: #6a737d;
+            font-size: 0.91em;
+            margin: 4px 0 11px 0;
+        }
+
+        .paper-abstract {
+            color: #444;
+            font-size: 0.91em;
+            line-height: 1.67;
+            padding-left: 13px;
+            margin-bottom: 14px;
+            border-left: 3px solid #0366d6;
+        }
+
+        .paper-abstract strong {
+            color: #24292e;
+        }
+
+        .paper-links {
+            margin-top: 13px;
+        }
+
+        .paper-links a {
             display: inline-block;
-            transition: background 0.2s;
+            background: #0366d6;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.87em;
+            text-decoration: none;
+            transition:
+                background 0.18s ease,
+                transform 0.18s ease;
         }
 
-        .paper-links a:hover { 
-            background: #0356b7; 
+        .paper-links a:hover {
+            background: #0356b7;
+            transform: translateY(-1px);
         }
 
-        /* Visitor Counter */
+        /* =========================
+           VISITOR COUNTER
+           ========================= */
+
         #visitor-counter {
             position: fixed;
             right: 18px;
@@ -130,16 +300,17 @@
             z-index: 1000;
 
             padding: 7px 12px;
-            border: 1px solid #d0d7de;
-            border-radius: 6px;
 
             background: rgba(255, 255, 255, 0.94);
             color: #57606a;
 
-            font-size: 0.78em;
-            line-height: 1.4;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+            font-size: 0.76em;
+            line-height: 1.4;
 
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
@@ -149,377 +320,715 @@
 
         #visitor-counter .visitor-count {
             color: #24292e;
-            font-weight: 600;
+            font-weight: 650;
+        }
+
+        /* =========================
+           RESPONSIVE
+           ========================= */
+
+        @media (max-width: 950px) {
+
+            .page {
+                padding: 28px 20px 55px 20px;
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .right-column {
+                margin-top: 0;
+            }
+
         }
 
         @media (max-width: 600px) {
-            #visitor-counter {
-                right: 10px;
-                bottom: 10px;
-                padding: 5px 9px;
-                font-size: 0.72em;
+
+            .page {
+                padding: 22px 14px 50px 14px;
             }
+
+            h1 {
+                font-size: 1.95em;
+            }
+
+            .subtitle {
+                font-size: 0.98em;
+            }
+
+            .section {
+                padding: 22px 19px;
+            }
+
+            .publications-section {
+                padding: 22px 19px;
+            }
+
+            #visitor-counter {
+                right: 9px;
+                bottom: 9px;
+                padding: 5px 8px;
+                font-size: 0.7em;
+            }
+
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- Header -->
-    <div class="header">
+<div class="page">
+
+    <!-- =========================================================
+         HEADER
+         ========================================================= -->
+
+    <header class="header">
         <h1>New Spacetime — Motion and Staticity</h1>
         <div class="subtitle">
             Dynamics, Operational Soldering, and Quantum Configuration in Motion-Staticity Geometry
         </div>
-    </div>
+    </header>
 
-    <!-- Overview -->
-    <div class="section">
-        <h2>Research Overview</h2>
+    <!-- =========================================================
+         TWO-COLUMN CONTENT
+         ========================================================= -->
 
-        <p>
-            This research program develops the "Motion-Staticity" (MS) reconstruction framework.
-            It begins with a bounded vector-scalar state for a massive process and asks how far
-            relativistic structure can be recovered by requiring compatible operational and
-            canonical representations. The resulting relativistic massive-generator geometry is
-            then used as input for an operational reconstruction of Lorentzian soldering and
-            spacetime geometry, followed by two distinct downstream directions: a restricted
-            classical gravitational and asymptotic-boundary branch, and a local quantum
-            soldering-kinematics branch.
-        </p>
-        
-        <p>
-            The primitive massive MS state is described by a motion component $\mathbf{D}$ and
-            a scalar staticity component $S$ satisfying
-        </p>
-        
-        <div class="math-block">
-            $$ |\mathbf{D}|^2 + S^2 = 1, \quad S > 0 $$
+    <main class="main-grid">
+
+        <!-- =====================================================
+             LEFT COLUMN
+             ===================================================== -->
+
+        <div class="left-column">
+
+            <section class="section">
+
+                <!-- Research Status first -->
+
+                <div class="notice notice-caution">
+                    <strong>Research Status and Caution:</strong>
+                    The manuscripts presented on this website are currently unpublished and have not
+                    undergone formal peer review. The framework should therefore be regarded as an
+                    ongoing theoretical investigation rather than as an established physical theory.
+                    Although the arguments are developed mathematically in the accompanying manuscripts,
+                    their correctness, completeness, physical interpretation, and possible relation to
+                    nature remain open to independent examination. Errors, overlooked assumptions,
+                    alternative interpretations, or substantial revisions may emerge as the work is
+                    further checked and developed. Readers are therefore encouraged to treat all claims
+                    as provisional, to verify the derivations independently, and to consult the most
+                    recent versions of the manuscripts when evaluating the framework.
+                </div>
+
+                <!-- AI note second -->
+
+                <div class="notice notice-ai">
+                    <strong>Note on AI and a New Paradigm:</strong>
+                    This research is conducted with the assistance of AI, proposing a completely new
+                    perspective on the universe and quantum mechanics. Visitors are highly encouraged
+                    to utilize these articles alongside AI tools to learn, understand, verify, and
+                    further deduce the profound implications of this theoretical framework.
+                </div>
+
+                <h2>The Motion-Staticity Research Program</h2>
+
+                <div class="series-intro">
+
+                    <p>
+                        The Motion-Staticity (MS) program is an inverse reconstruction approach.
+                        Instead of beginning with the Minkowski metric, Lorentz transformations,
+                        or a relativistic action as the primary starting point, it begins with a
+                        bounded state assigned to a massive process. The question is then:
+                        how much of familiar relativistic structure can be recovered when this
+                        state is required to possess mutually compatible operational and
+                        dynamical representations?
+                    </p>
+
+                    <p>
+                        The primitive state contains a three-dimensional motion component
+                        $\mathbf D$ and a scalar staticity component $S$:
+                    </p>
+                    <div class="math-block single-line">$$|\mathbf D|^2+S^2=1,\qquad S>0.$$</div>
+                    <p>
+                        This equation should not be read as a spacetime metric. It is an internal
+                        Euclidean normalization of the state itself. Its physical meaning appears
+                        only after an operational realization is specified. A massive process is
+                        assumed to carry both a spatial displacement and an additive intrinsic
+                        scalar accumulation. The radial coefficient assigned by an inertial
+                        observer then defines an observer duration, and the bounded components
+                        become
+                    </p>
+                    <div class="math-block single-line">$$\mathbf D=\frac{\mathbf v}{c},\qquad S=\frac{d\tau}{dt}.$$</div>
+                    <p>
+                        From this starting point the papers develop in stages. The first paper
+                        studies the free-particle dynamics implied by compatibility with a
+                        canonical Hamiltonian description. The second separates the internal
+                        Lorentz generator space from the tangent space of a curved manifold and
+                        reconstructs the map relating them. The third asks what quantum
+                        kinematics arise if that reconstructed solder map itself becomes a
+                        configuration variable. The fourth follows a different, classical
+                        branch and asks how a locally reconstructed geometry acquires a global
+                        energy-momentum at an asymptotically flat boundary.
+                    </p>
+
+                </div>
+
+                <!-- =================================================
+                     PAPER I GUIDE
+                     ================================================= -->
+
+                <div class="paper-guide">
+
+                    <span class="paper-number">Paper I</span>
+
+                    <h3 class="guide-title">
+                        From a bounded state to relativistic free-particle dynamics
+                    </h3>
+
+                    <p>
+                        The first paper establishes the flat-space foundation of the program.
+                        The key point is not simply that the relation
+                        $|\mathbf D|^2+S^2=1$ resembles the usual velocity/proper-time identity.
+                        The paper requires one and the same MS state to be represented in two
+                        different ways: operationally, through motion and proper-time rate, and
+                        canonically, through a free Hamiltonian $H(\mathbf p)$.
+                    </p>
+
+                    <p>
+                        Hamilton's equation identifies the velocity with
+                        $\nabla_{\mathbf p}H$. The scalar part of the state is simultaneously
+                        required to agree with the corresponding canonical response. Combining
+                        the two channels gives the nonlinear consistency condition
+                    </p>
+                    <div class="math-block single-line">$$\frac{|\nabla_{\mathbf p}H|^2}{c^2}+\frac{\left(H-\mathbf p\cdot\nabla_{\mathbf p}H\right)^2}{c^2Q^2}=1.$$</div>
+                    <p>
+                        This equation alone does <em>not</em> automatically force the standard
+                        relativistic Hamiltonian. The paper explicitly exhibits degenerate
+                        lower-dimensional solutions. The strong rigidity result appears after
+                        imposing global conditions: the Hamiltonian is finite, convex and
+                        $C^1$, has the calibrated rest value $H(\mathbf0)=cQ$, and its canonical
+                        state map represents the complete massive MS state manifold. Under
+                        these assumptions,
+                    </p>
+                    <div class="math-block single-line">$$H(\mathbf p)=c\sqrt{|\mathbf p|^2+Q^2}.$$</div>
+                    <p>
+                        With $Q=mc$, this is the ordinary relativistic massive dispersion
+                        relation. Only after this dynamical result is obtained does the paper
+                        study covariance. The positive massive shell carries the connected
+                        Lorentz group as its maximal connected linear covariance group, and
+                        allowing freedom in the choice of event origin gives the corresponding
+                        proper orthochronous Poincaré structure.
+                    </p>
+
+                    <div class="concept-line">
+                        <strong>Main role in the series:</strong>
+                        establish the relativistic massive-generator geometry that the later
+                        papers use as an input.
+                    </div>
+
+                </div>
+
+                <!-- =================================================
+                     PAPER II GUIDE
+                     ================================================= -->
+
+                <div class="paper-guide">
+
+                    <span class="paper-number">Paper II</span>
+
+                    <h3 class="guide-title">
+                        From internal Lorentz geometry to curved spacetime
+                    </h3>
+
+                    <p>
+                        Once the first paper has produced an internal relativistic generator
+                        geometry, a new problem appears in curved spacetime. An internal
+                        four-dimensional Lorentz vector space and the tangent space of the
+                        spacetime manifold need not initially be identified. In standard tetrad
+                        language, that identification is supplied by a solder form. The second
+                        paper asks whether such a soldering relation can instead be reconstructed
+                        from operational information.
+                    </p>
+
+                    <p>
+                        At each event $x$, the theory therefore starts with an internal Lorentz
+                        space $V_x$ and a tangent space $T_xM$ as distinct objects. The primitive
+                        information is a scalar generator-displacement response
+                        $\Theta_x(\Pi,\xi)$, where $\Pi$ is an internal massive-generator
+                        covector and $\xi$ is an infinitesimal spacetime displacement.
+                    </p>
+
+                    <p>
+                        Additive composition, positive homogeneity, continuity, smooth dependence
+                        on the spacetime point, and operational faithfulness allow this response
+                        to extend uniquely to a bilinear pairing. Finite-dimensional duality then
+                        reconstructs a linear map
+                    </p>
+                    <div class="math-block single-line">$$e_x:T_xM\longrightarrow V_x,\qquad \Theta_x(\Pi,\xi)=\Pi(e_x\xi).$$</div>
+                    <p>
+                        Faithfulness makes this map injective, and because both spaces have rank
+                        four, it becomes an isomorphism. The internal Lorentz form $\eta$ can then
+                        be pulled back to spacetime:
+                    </p>
+                    <div class="math-block single-line">$$g=e^*\eta.$$</div>
+                    <p>
+                        An important distinction is calibration. If the response is known only
+                        up to a positive local scale, the construction fixes only the conformal
+                        metric class. Absolute response calibration is needed to obtain an
+                        absolute spacetime metric scale.
+                    </p>
+
+                    <p>
+                        The paper also investigates gravity, but this is a separate downstream
+                        step. After introducing additional assumptions — including a torsion-free
+                        branch, metric ADM phase space, the standard Lorentzian
+                        hypersurface-deformation algebra, and a restricted form of the scalar
+                        constraint — off-shell closure selects the familiar ADM/Einstein branch.
+                        This is therefore a conditional gravitational completion, not a claim
+                        that Einstein's equations follow from the MS normalization alone.
+                    </p>
+
+                    <div class="concept-line">
+                        <strong>Main role in the series:</strong>
+                        convert the internal Lorentz generator geometry of Paper I into a
+                        spacetime geometry through an operationally reconstructed solder map.
+                    </div>
+
+                </div>
+
+                <!-- =================================================
+                     PAPER III GUIDE
+                     ================================================= -->
+
+                <div class="paper-guide">
+
+                    <span class="paper-number">Paper III</span>
+
+                    <h3 class="guide-title">
+                        Making the solder map into a quantum configuration variable
+                    </h3>
+
+                    <p>
+                        The third paper follows a quantum-kinematical branch rather than
+                        quantizing the gravitational completion of Paper II. Its starting point
+                        is the reconstructed solder map itself. At a fixed spacetime event, all
+                        linear solderings form the configuration space
+                    </p>
+                    <div class="math-block single-line">$$\mathcal E_x=\operatorname{Hom}(T_xM,V_x).$$</div>
+                    <p>
+                        The same scalar response used classically now becomes a family of
+                        configuration functions,
+                    </p>
+                    <div class="math-block single-line">$$\Theta_{\Pi,\xi}(e)=\Pi(e\xi).$$</div>
+                    <p>
+                        These functions are sufficiently rich to separate different soldering
+                        configurations. One might expect noncommutative quantum structure to
+                        emerge simply by representing the responses as operators, but the paper
+                        shows an important obstruction: if additive composition in the generator
+                        and displacement arguments is implemented exactly, the resulting response
+                        algebra is necessarily Abelian.
+                    </p>
+
+                    <p>
+                        Noncommutativity therefore requires an additional physical principle.
+                        The paper assumes that translations of the soldering configuration
+                        $e\mapsto e+A$ can be implemented coherently. Introducing the standard
+                        cotangent phase space $T^*\mathcal E_x$, the generators of these
+                        deformations become conjugate to the response observables, producing
+                    </p>
+                    <div class="math-block single-line">$$[\widehat K(A),\widehat\Theta_{\Pi,\xi}]=i\hbar\,\Pi(A\xi)I.$$</div>
+                    <p>
+                        The response observables themselves still commute; the noncommutativity
+                        arises from operators that move between soldering configurations. After
+                        reduction by the internal Lorentz redundancy, the nondegenerate
+                        soldering variables reduce to the expected Lorentz metric configuration
+                        degrees of freedom.
+                    </p>
+
+                    <p>
+                        A separate part of the paper studies finite rotational comparison and a
+                        possible spin-cover parity diagnostic. That result is deliberately narrow:
+                        it does not by itself produce spin-$1/2$ matter, Fermi statistics, a
+                        Standard Model gauge group, or a full quantum theory of gravity.
+                    </p>
+
+                    <div class="concept-line">
+                        <strong>Main role in the series:</strong>
+                        identify a local quantum configuration and Weyl-type kinematics naturally
+                        associated with variations of the operationally reconstructed solder map.
+                    </div>
+
+                </div>
+
+                <!-- =================================================
+                     PAPER IV GUIDE
+                     ================================================= -->
+
+                <div class="paper-guide">
+
+                    <span class="paper-number">Paper IV</span>
+
+                    <h3 class="guide-title">
+                        From local geometry to the total momentum of an isolated system
+                    </h3>
+
+                    <p>
+                        The fourth paper returns to the classical branch. The previous
+                        construction gives local spacetime geometry and, under additional
+                        assumptions, bulk gravitational generators. But a local generally
+                        covariant theory does not automatically contain a well-defined total
+                        energy or momentum for an isolated gravitating system.
+                    </p>
+
+                    <p>
+                        The paper therefore considers a calibrated asymptotically Minkowskian
+                        end satisfying the standard Regge-Teitelboim falloff and parity
+                        conditions. When the bulk generators are allowed to approach constant
+                        asymptotic translations, their variation develops a boundary term that
+                        prevents functional differentiability. Adding the appropriate boundary
+                        primitive completes the generator:
+                    </p>
+                    <div class="math-block single-line">$$G[a]=G_0[a]+B_\infty[a].$$</div>
+                    <p>
+                        Because $B_\infty[a]$ is linear in the asymptotic translation parameter
+                        $a$, it defines a translation covector
+                        $\mathsf P_\infty^{\mathrm{MS}}$. This is the point where a genuine
+                        global momentum-like object first appears in the MS construction.
+                    </p>
+
+                    <p>
+                        The paper then expresses the resulting charge in observer space. The
+                        energy measured by an asymptotic observer $u$ is
+                    </p>
+                    <div class="math-block single-line">$$E_\infty(u)=-\eta_\infty(P_\infty^{\mathrm{MS}},u).$$</div>
+                    <p>
+                        In the future-timelike sector, minimizing this energy over observers gives
+                        the invariant radial mass. This mirrors the local construction in an
+                        interesting way: locally, one varies the massive generator while holding
+                        a displacement fixed to recover a proper-time norm; globally, one varies
+                        the observer while holding the total generator fixed to recover the
+                        invariant mass. The paper calls this relation
+                        <em>local-global response reciprocity</em>.
+                    </p>
+
+                    <p>
+                        Finally, after imposing the empirical Einstein normalization
+                        $\kappa=8\pi G/c^4$, the completed translation charge agrees with the
+                        standard ADM four-momentum. The paper does not derive the numerical value
+                        of $G$, nor does it replace the standard positive-mass theorem.
+                    </p>
+
+                    <div class="concept-line">
+                        <strong>Main role in the series:</strong>
+                        extend the locally reconstructed classical geometry to the asymptotic
+                        translation sector and identify the resulting global energy-momentum.
+                    </div>
+
+                </div>
+
+            </section>
+
         </div>
 
-        <p>
-            This quadratic relation is an internal Euclidean state-space normalization; it is not
-            introduced as a spacetime metric. In the operational radial realization,
-            $\mathbf{D}$ becomes $\mathbf{v}/c$, while the scalar component becomes
-            $S=d\tau/dt$ after the additive intrinsic scalar accumulation is identified with
-            proper time through the induced Lorentzian chronometry.
-        </p>
-        
-        <p>
-            Requiring the same MS state to admit a compatible canonical representation with an
-            initially unspecified free Hamiltonian $H(\mathbf{p})$ gives the consistency equation
-        </p>
+        <!-- =====================================================
+             RIGHT COLUMN
+             ===================================================== -->
 
-        <div class="math-block">
-            $$
-            \frac{|\nabla_{\mathbf p}H|^2}{c^2}
-            +
-            \frac{\left(H-\mathbf p\cdot\nabla_{\mathbf p}H\right)^2}{c^2Q^2}
-            =1,
-            \qquad
-            H-\mathbf p\cdot\nabla_{\mathbf p}H>0.
-            $$
-        </div>
+        <aside class="right-column">
 
-        <p>
-            For a finite convex $C^1$ Hamiltonian with the calibrated rest value
-            $H(\mathbf{0})=cQ$, satisfying this relation globally and giving a complete canonical
-            representation of the massive MS state manifold, the free Hamiltonian is uniquely
-        </p>
+            <section class="section publications-section">
 
-        <div class="math-block">
-            $$ H(\mathbf{p}) = c\sqrt{|\mathbf{p}|^2 + Q^2}. $$
-        </div>
+                <h2>Publications</h2>
 
-        <p>
-            The corresponding positive massive-generator geometry supplies the Lorentzian
-            internal structure used in the curved-spacetime reconstruction. A scalar
-            generator-displacement response then reconstructs a nondegenerate solder map
-            $e:TM\to V$ and the metric $g=e^*\eta$. From this point the program separates into
-            distinct developments: under additional restricted canonical assumptions one obtains
-            an ADM/Einstein classical branch and, with asymptotic boundary conditions, a total
-            translation charge; alternatively, treating the solder map as a configuration variable
-            and adding coherent soldering deformations produces a local Weyl-type quantum
-            kinematics.
-        </p>
+                <!-- =============================================
+                     PAPER I
+                     ============================================= -->
 
-        <p>
-            <strong>Research Status and Caution:</strong>
-            The manuscripts presented on this website are currently unpublished and have not
-            undergone formal peer review. The framework should therefore be regarded as an
-            ongoing theoretical investigation rather than as an established physical theory.
-            Although the arguments are developed mathematically in the accompanying manuscripts,
-            their correctness, completeness, physical interpretation, and possible relation to
-            nature remain open to independent examination. Errors, overlooked assumptions,
-            alternative interpretations, or substantial revisions may emerge as the work is
-            further checked and developed. Readers are therefore encouraged to treat all claims
-            as provisional, to verify the derivations independently, and to consult the most
-            recent versions of the manuscripts when evaluating the framework.
-        </p>
-        
-        <p><strong>Note on AI and a New Paradigm:</strong> This research is conducted with the assistance of AI, proposing a completely new perspective on the universe and quantum mechanics. Visitors are highly encouraged to utilize these articles alongside AI tools to learn, understand, verify, and further deduce the profound implications of this theoretical framework.</p>
-    </div>
+                <div class="paper-item">
 
-    <!-- Publications -->
-    <div class="section">
-        <h2>Publications</h2>
-        
-        <!-- Paper I -->
-        <div class="paper-item">
-            <div class="paper-title">
-                Paper I: Compact-State Duality and Rigidity in Relativistic Free-Particle Dynamics
-            </div>
-            <div class="paper-authors">The Author</div>
-            
-            <div class="paper-abstract">
-                <strong>Abstract:</strong>
-                We formulate classical relativistic free-particle dynamics in terms of a bounded
-                vector-scalar state $(\mathbf{D},S)$ satisfying
-                $|\mathbf{D}|^2+S^2=1$ with $S>0$. Its operational radial realization relates
-                the state to spatial displacement, observer duration, and an additive intrinsic
-                scalar accumulation that acquires the proper-time interpretation. Requiring the
-                same state to admit a compatible canonical representation produces a nonlinear
-                consistency equation for an otherwise unspecified free Hamiltonian. For a finite
-                convex $C^1$ Hamiltonian with $H(\mathbf 0)=cQ$ and a complete canonical
-                representation of the massive state manifold, the Hamiltonian is uniquely
-                $$ H(\mathbf{p}) = c\sqrt{|\mathbf{p}|^2 + Q^2}. $$
-                Complementary rigidity results and explicit degenerate projection solutions show
-                why completeness or nondegeneracy assumptions are essential. The resulting
-                positive massive shell has $SO^+(1,3)$ as its maximal connected linear covariance
-                group, with translation-origin freedom giving the proper orthochronous Poincaré
-                structure.
-            </div>
-            
-            <div class="paper-links">
-                <a href="pre-Minkowski.pdf" target="_blank">📄 Read PDF</a>
-            </div>
-        </div>
+                    <div class="paper-title">
+                        Paper I: Compact-State Duality and Rigidity in Relativistic Free-Particle Dynamics
+                    </div>
 
-        <!-- Paper II -->
-        <div class="paper-item">
-            <div class="paper-title">
-                Paper II: Operational Soldering from Relativistic Massive-State Geometry: An Inverse Reconstruction
-            </div>
-            <div class="paper-authors">The Author</div>
-            
-            <div class="paper-abstract">
-                <strong>Abstract:</strong>
-                Taking the relativistic massive-generator geometry obtained in the flat-space
-                analysis as input, we formulate an inverse reconstruction of local Lorentzian
-                spacetime geometry. An internal rank-four Lorentz bundle $V\to M$ is initially
-                independent of the tangent bundle $TM$, with no spacetime metric or solder form
-                assumed. A scalar generator-displacement response
-                $\Theta_x(\Pi,\xi)$, defined on the positive massive-generator cone and tangent
-                displacements, is required to satisfy composition, positive homogeneity,
-                continuity, smooth base-point dependence, and operational faithfulness.
-                These conditions give a unique bilinear extension and reconstruct a unique
-                nondegenerate solder map
-                $$ e_x:T_xM\longrightarrow V_x, \qquad g=e^*\eta. $$
-                Absolute response calibration fixes the spacetime metric scale, whereas response
-                data known only up to local positive rescaling determine only the conformal class.
-                As a separate and conditional downstream result, imposing a torsion-free branch,
-                metric ADM phase space, the standard Lorentzian hypersurface-deformation algebra,
-                and a restricted quadratic scalar constraint recovers the ADM/Einstein branch by
-                off-shell closure.
-            </div>
-            
-            <div class="paper-links">
-                <a href="general-reletive.pdf" target="_blank">📄 Read PDF</a>
-            </div>
-        </div>
+                    <div class="paper-authors">
+                        The Author
+                    </div>
 
-        <!-- Paper III -->
-        <div class="paper-item">
-            <div class="paper-title">
-                Paper III: From Operational Soldering to Quantum Configuration Space: Coherent Deformations and Projective Comparison
-            </div>
-            <div class="paper-authors">The Author</div>
-            
-            <div class="paper-abstract">
-                <strong>Abstract:</strong>
-                Starting from the operationally reconstructed Lorentzian solder map, we study the
-                local quantum kinematics associated with allowing the soldering configuration to
-                vary. At each event the ambient configuration space is
-                $\mathcal{E}_x=\mathrm{Hom}(T_xM,V_x)$, and the response functions
-                $\Theta_{\Pi,\xi}(e)=\Pi(e\xi)$ span its linear dual and separate
-                configurations. An exact unitary implementation that preserves additive
-                composition independently in the generator and displacement arguments is
-                necessarily Abelian, so the classical response alone does not generate
-                noncommutative kinematics. Introducing the additional principle of coherent
-                soldering translations $e\mapsto e+A$ and the standard cotangent completion
-                $T^*\mathcal{E}_x$ yields
-                $$ [\hat{K}(A), \hat{\Theta}_{\Pi,\xi}]
-                = i\hbar\,\Pi(A\xi)I, $$
-                while the response observables themselves remain mutually commuting. On the
-                nondegenerate sector, zero-level internal Lorentz reduction recovers the cotangent
-                bundle of oriented, time-oriented Lorentz metric configuration space. A separate
-                projective comparison construction provides a conditional diagnostic of
-                spin-cover parity. The construction is local and kinematical; it is not a
-                quantization of general relativity or a derivation of matter.
-            </div>
-            
-            <div class="paper-links">
-                <a href="Quantum_mechanics I.pdf" target="_blank">📄 Read PDF</a>
-            </div>
-        </div>
+                    <div class="paper-abstract">
+                        <strong>Abstract:</strong>
+                        We formulate classical relativistic free-particle dynamics in terms of a
+                        bounded vector-scalar state $(\mathbf D,S)$ satisfying
+                        $|\mathbf D|^2+S^2=1$ with $S>0$. Its operational radial realization
+                        relates the state to spatial displacement, observer duration, and an
+                        additive intrinsic scalar accumulation that acquires the proper-time
+                        interpretation. Requiring the same state to admit a compatible canonical
+                        representation produces a nonlinear consistency equation for an otherwise
+                        unspecified free Hamiltonian. For a finite convex $C^1$ Hamiltonian with
+                        $H(\mathbf0)=cQ$ and a complete canonical representation of the massive
+                        state manifold, the Hamiltonian is uniquely
+                        <div class="math-block single-line">$$H(\mathbf p)=c\sqrt{|\mathbf p|^2+Q^2}.$$</div>
+                        Complementary rigidity results and explicit degenerate projection
+                        solutions show why completeness or nondegeneracy assumptions are
+                        essential. The resulting positive massive shell has $SO^+(1,3)$ as its
+                        maximal connected linear covariance group, with translation-origin
+                        freedom giving the proper orthochronous Poincaré structure.
+                    </div>
 
-        <!-- Paper IV -->
-        <div class="paper-item">
-            <div class="paper-title">
-                Paper IV: From Local Response to Global Momentum: Asymptotic Boundary Completion in Motion-Staticity Geometry
-            </div>
-            <div class="paper-authors">The Author</div>
-            
-            <div class="paper-abstract">
-                <strong>Abstract:</strong>
-                Returning to the restricted classical branch, we study how a locally reconstructed
-                gravitational geometry acquires a global translation generator for an isolated
-                system. On calibrated asymptotically Minkowskian ends, standard
-                Regge-Teitelboim falloff and parity conditions are imposed together with the
-                response calibration required at the translation-sensitive asymptotic orders.
-                Allowing the reconstructed bulk generators to approach constant translations
-                produces a surface obstruction to functional differentiability. Its boundary
-                primitive defines a total translation covector
-                $\mathsf{P}^{\mathrm{MS}}_\infty\in\mathfrak{t}^*_\infty$.
-                The resulting observer-energy function reconstructs the complete total momentum
-                and exhibits a local-global response reciprocity between proper-time norm and
-                invariant mass. After imposing the empirical Einstein normalization
-                $\kappa=\frac{8\pi G}{c^4}$, the completed MS translation charge agrees with the
-                ADM four-momentum:
-                $$ E_\infty^{\mathrm{MS}} = E_{\mathrm{ADM}},
-                \quad
-                \mathbf{P}_\infty^{\mathrm{MS}} = \mathbf{P}_{\mathrm{ADM}}. $$
-                The construction does not derive the value of $G$ or a new positive-mass theorem;
-                its contribution is the operational provenance and structural placement of the
-                asymptotic translation charge within the MS framework.
-            </div>
-            
-            <div class="paper-links">
-                <a href="ADM.pdf" target="_blank">📄 Read PDF</a>
-            </div>
-        </div>
+                    <div class="paper-links">
+                        <a href="pre-Minkowski.pdf" target="_blank">📄 Read PDF</a>
+                    </div>
 
-    </div>
+                </div>
 
-    <!-- Visitor Counter -->
-    <div id="visitor-counter" title="Approximate total visits">
-        Views:
-        <span class="visitor-count">...</span>
-    </div>
+                <!-- =============================================
+                     PAPER II
+                     ============================================= -->
 
-    <!-- Visitor Counter Script -->
-    <script>
-        (function () {
+                <div class="paper-item">
 
-            const counterElement =
-                document.querySelector('#visitor-counter .visitor-count');
+                    <div class="paper-title">
+                        Paper II: Operational Soldering from Relativistic Massive-State Geometry: An Inverse Reconstruction
+                    </div>
+
+                    <div class="paper-authors">
+                        The Author
+                    </div>
+
+                    <div class="paper-abstract">
+                        <strong>Abstract:</strong>
+                        Taking the relativistic massive-generator geometry obtained in the
+                        flat-space analysis as input, we formulate an inverse reconstruction of
+                        local Lorentzian spacetime geometry. An internal rank-four Lorentz bundle
+                        $V\to M$ is initially independent of the tangent bundle $TM$, with no
+                        spacetime metric or solder form assumed. A scalar generator-displacement
+                        response $\Theta_x(\Pi,\xi)$, defined on the positive massive-generator
+                        cone and tangent displacements, is required to satisfy composition,
+                        positive homogeneity, continuity, smooth base-point dependence, and
+                        operational faithfulness. These conditions give a unique bilinear
+                        extension and reconstruct a unique nondegenerate solder map
+                        <div class="math-block single-line">$$e_x:T_xM\longrightarrow V_x,\qquad g=e^*\eta.$$</div>
+                        Absolute response calibration fixes the spacetime metric scale, whereas
+                        response data known only up to local positive rescaling determine only
+                        the conformal class. As a separate and conditional downstream result,
+                        imposing a torsion-free branch, metric ADM phase space, the standard
+                        Lorentzian hypersurface-deformation algebra, and a restricted quadratic
+                        scalar constraint recovers the ADM/Einstein branch by off-shell closure.
+                    </div>
+
+                    <div class="paper-links">
+                        <a href="general-reletive.pdf" target="_blank">📄 Read PDF</a>
+                    </div>
+
+                </div>
+
+                <!-- =============================================
+                     PAPER III
+                     ============================================= -->
+
+                <div class="paper-item">
+
+                    <div class="paper-title">
+                        Paper III: From Operational Soldering to Quantum Configuration Space: Coherent Deformations and Projective Comparison
+                    </div>
+
+                    <div class="paper-authors">
+                        The Author
+                    </div>
+
+                    <div class="paper-abstract">
+                        <strong>Abstract:</strong>
+                        Starting from the operationally reconstructed Lorentzian solder map, we
+                        study the local quantum kinematics associated with allowing the soldering
+                        configuration to vary. At each event the ambient configuration space is
+                        $\mathcal E_x=\mathrm{Hom}(T_xM,V_x)$, and the response functions
+                        $\Theta_{\Pi,\xi}(e)=\Pi(e\xi)$ span its linear dual and separate
+                        configurations. An exact unitary implementation that preserves additive
+                        composition independently in the generator and displacement arguments is
+                        necessarily Abelian, so the classical response alone does not generate
+                        noncommutative kinematics. Introducing the additional principle of
+                        coherent soldering translations $e\mapsto e+A$ and the standard
+                        cotangent completion $T^*\mathcal E_x$ yields
+                        <div class="math-block single-line">$$[\hat K(A),\hat\Theta_{\Pi,\xi}]=i\hbar\,\Pi(A\xi)I,$$</div>
+                        while the response observables themselves remain mutually commuting.
+                        On the nondegenerate sector, zero-level internal Lorentz reduction
+                        recovers the cotangent bundle of oriented, time-oriented Lorentz metric
+                        configuration space. A separate projective comparison construction
+                        provides a conditional diagnostic of spin-cover parity. The construction
+                        is local and kinematical; it is not a quantization of general relativity
+                        or a derivation of matter.
+                    </div>
+
+                    <div class="paper-links">
+                        <a href="Quantum_mechanics I.pdf" target="_blank">📄 Read PDF</a>
+                    </div>
+
+                </div>
+
+                <!-- =============================================
+                     PAPER IV
+                     ============================================= -->
+
+                <div class="paper-item">
+
+                    <div class="paper-title">
+                        Paper IV: From Local Response to Global Momentum: Asymptotic Boundary Completion in Motion-Staticity Geometry
+                    </div>
+
+                    <div class="paper-authors">
+                        The Author
+                    </div>
+
+                    <div class="paper-abstract">
+                        <strong>Abstract:</strong>
+                        Returning to the restricted classical branch, we study how a locally
+                        reconstructed gravitational geometry acquires a global translation
+                        generator for an isolated system. On calibrated asymptotically
+                        Minkowskian ends, standard Regge-Teitelboim falloff and parity conditions
+                        are imposed together with the response calibration required at the
+                        translation-sensitive asymptotic orders. Allowing the reconstructed bulk
+                        generators to approach constant translations produces a surface
+                        obstruction to functional differentiability. Its boundary primitive
+                        defines a total translation covector
+                        $\mathsf P_\infty^{\mathrm{MS}}\in\mathfrak t_\infty^*$.
+                        The resulting observer-energy function reconstructs the complete total
+                        momentum and exhibits a local-global response reciprocity between
+                        proper-time norm and invariant mass. After imposing the empirical
+                        Einstein normalization $\kappa=\frac{8\pi G}{c^4}$, the completed MS
+                        translation charge agrees with the ADM four-momentum:
+                        <div class="math-block single-line">$$E_\infty^{\mathrm{MS}}=E_{\mathrm{ADM}},\qquad \mathbf P_\infty^{\mathrm{MS}}=\mathbf P_{\mathrm{ADM}}.$$</div>
+                        The construction does not derive the value of $G$ or a new positive-mass
+                        theorem; its contribution is the operational provenance and structural
+                        placement of the asymptotic translation charge within the MS framework.
+                    </div>
+
+                    <div class="paper-links">
+                        <a href="ADM.pdf" target="_blank">📄 Read PDF</a>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </aside>
+
+    </main>
+
+</div>
+
+<!-- =============================================================
+     VISITOR COUNTER
+     ============================================================= -->
+
+<div id="visitor-counter" title="Approximate total visits">
+    Views:
+    <span class="visitor-count">...</span>
+</div>
+
+<script>
+
+(function () {
+
+    const counterElement =
+        document.querySelector('#visitor-counter .visitor-count');
+
+    const site = window.location.hostname;
+
+    let path = window.location.pathname || '/';
+
+    path = path.replace(/\/index\.html?$/i, '/');
+
+    if (!path) {
+        path = '/';
+    }
+
+    /*
+     * Disable counter while testing locally.
+     */
+    if (
+        !site ||
+        site === 'localhost' ||
+        site === '127.0.0.1'
+    ) {
+        counterElement.textContent = '--';
+        return;
+    }
+
+    const apiBase =
+        'https://page-views-api.ratneshc.com/api/v1';
+
+    const siteParameter =
+        encodeURIComponent(site);
+
+    const pathParameter =
+        encodeURIComponent(path);
+
+    async function updateVisitorCounter() {
+
+        try {
 
             /*
-             * Use the current website domain automatically.
-             * Example:
-             * example.com
-             * username.github.io
+             * Register visit.
              */
-            const site = window.location.hostname;
-
-            /*
-             * Treat index.html and / as the same page.
-             * This also works correctly when the website is hosted
-             * inside a subdirectory such as GitHub Pages.
-             */
-            let path = window.location.pathname || '/';
-
-            path = path.replace(/\/index\.html?$/i, '/');
-
-            if (!path) {
-                path = '/';
-            }
-
-            /*
-             * The counter only runs on an actual website.
-             * It will display "--" when the HTML file is opened
-             * directly from the computer or on localhost.
-             */
-            if (
-                !site ||
-                site === 'localhost' ||
-                site === '127.0.0.1'
-            ) {
-                counterElement.textContent = '--';
-                return;
-            }
-
-            const apiBase =
-                'https://page-views-api.ratneshc.com/api/v1';
-
-            const siteParameter =
-                encodeURIComponent(site);
-
-            const pathParameter =
-                encodeURIComponent(path);
-
-            async function updateVisitorCounter() {
-
-                try {
-
-                    /*
-                     * Register this visit.
-                     */
-                    await fetch(
-                        `${apiBase}/track?site=${siteParameter}&path=${pathParameter}`,
-                        {
-                            method: 'GET',
-                            cache: 'no-store'
-                        }
-                    );
-
-                    /*
-                     * Read the current total.
-                     */
-                    const response = await fetch(
-                        `${apiBase}/views?site=${siteParameter}&path=${pathParameter}`,
-                        {
-                            method: 'GET',
-                            cache: 'no-store'
-                        }
-                    );
-
-                    if (!response.ok) {
-                        throw new Error(
-                            `Visitor counter returned ${response.status}`
-                        );
-                    }
-
-                    const data = await response.json();
-
-                    const views = Number(data.views);
-
-                    if (Number.isFinite(views)) {
-                        counterElement.textContent =
-                            views.toLocaleString();
-                    } else {
-                        counterElement.textContent = '--';
-                    }
-
-                } catch (error) {
-
-                    /*
-                     * If the external counter service is temporarily
-                     * unavailable, the rest of the webpage is unaffected.
-                     */
-                    console.warn(
-                        'Visitor counter unavailable:',
-                        error
-                    );
-
-                    counterElement.textContent = '--';
+            await fetch(
+                `${apiBase}/track?site=${siteParameter}&path=${pathParameter}`,
+                {
+                    method: 'GET',
+                    cache: 'no-store'
                 }
+            );
+
+            /*
+             * Retrieve current count.
+             */
+            const response = await fetch(
+                `${apiBase}/views?site=${siteParameter}&path=${pathParameter}`,
+                {
+                    method: 'GET',
+                    cache: 'no-store'
+                }
+            );
+
+            if (!response.ok) {
+                throw new Error(
+                    `Visitor counter returned ${response.status}`
+                );
             }
 
-            updateVisitorCounter();
+            const data = await response.json();
 
-        })();
-    </script>
+            const views = Number(data.views);
+
+            if (Number.isFinite(views)) {
+
+                counterElement.textContent =
+                    views.toLocaleString();
+
+            } else {
+
+                counterElement.textContent = '--';
+
+            }
+
+        } catch (error) {
+
+            console.warn(
+                'Visitor counter unavailable:',
+                error
+            );
+
+            counterElement.textContent = '--';
+
+        }
+
+    }
+
+    updateVisitorCounter();
+
+})();
+
+</script>
 
 </body>
 </html>
